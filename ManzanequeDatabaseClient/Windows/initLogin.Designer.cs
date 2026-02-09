@@ -1,6 +1,6 @@
 ﻿namespace ManzanequeDatabaseClient
 {
-    partial class Form1
+    partial class initLogin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            button1 = new Button();
             SuspendLayout();
             // 
-            // Form1
+            // button1
+            // 
+            button1.Location = new Point(201, 172);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "Login";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // initLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Form1";
-            Text = "Form1";
+            BackColor = Color.FromArgb(226, 244, 234);
+            ClientSize = new Size(484, 361);
+            Controls.Add(button1);
+            Name = "initLogin";
+            Text = "Login";
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button1;
     }
 }
