@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace ManzanequeDatabaseClient.Classes
 {
-    internal class Init
+    public class Init
     {
         public void initialise()
         {
             RunSql execute = new RunSql();
+            execute.initialise();
 
-            execute.Run();
+            string create_database = """
+                
+                """;
+
+            execute.Push("wazzup\n");
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
+using ManzanequeDatabaseClient.Classes;
 using ManzanequeDatabaseClient.Windows;
 using Mysqlx.Crud;
 
@@ -30,7 +31,8 @@ namespace ManzanequeDatabaseClient
 
         private void initLogin_Load(object sender, EventArgs e)
         {
-
+            Init initialise = new Init();
+            initialise.initialise();
         }
 
         private void initLogin_FormClosing(object sender, FormClosingEventArgs e)
