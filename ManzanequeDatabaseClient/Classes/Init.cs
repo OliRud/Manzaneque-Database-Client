@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ManzanequeDatabaseClient.Classes
+{
+    internal class Init
+    {
+        public void initialise()
+        {
+            RunSql execute = new RunSql();
+
+            execute.Run();
+        }
+    }
+}

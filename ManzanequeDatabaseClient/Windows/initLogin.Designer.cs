@@ -28,18 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            btnLogin = new Button();
+            entLoginBox = new TextBox();
             SuspendLayout();
             // 
-            // button1
+            // btnLogin
             // 
-            button1.Location = new Point(201, 172);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnLogin.Location = new Point(196, 238);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(75, 23);
+            btnLogin.TabIndex = 0;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
+            // 
+            // entLoginBox
+            // 
+            entLoginBox.Location = new Point(131, 170);
+            entLoginBox.Name = "entLoginBox";
+            entLoginBox.Size = new Size(204, 23);
+            entLoginBox.TabIndex = 1;
             // 
             // initLogin
             // 
@@ -47,14 +55,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
             ClientSize = new Size(484, 361);
-            Controls.Add(button1);
+            Controls.Add(entLoginBox);
+            Controls.Add(btnLogin);
             Name = "initLogin";
             Text = "Login";
+            FormClosing += initLogin_FormClosing;
+            Load += initLogin_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
+        private Button btnLogin;
+        private TextBox entLoginBox;
     }
 }

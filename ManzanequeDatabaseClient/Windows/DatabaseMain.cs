@@ -12,9 +12,18 @@ namespace ManzanequeDatabaseClient.Windows
 {
     public partial class DatabaseMain : Form
     {
-        public DatabaseMain()
+        Form root = null;
+
+        public DatabaseMain(Form root_class)
         {
             InitializeComponent();
+
+            root = root_class;
+        }
+
+        private void DatabaseMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            root.Close();
         }
     }
 }
