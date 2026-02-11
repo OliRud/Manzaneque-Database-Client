@@ -41,6 +41,11 @@ namespace ManzanequeDatabaseClient.Classes
             try
             {
                 con.Open();
+
+                sql = command;
+                cmd = new MySqlCommand(sql, con);
+                cmd.ExecuteNonQuery();
+
                 con.Close();
             }
             catch (MySqlException ex)
@@ -61,6 +66,12 @@ namespace ManzanequeDatabaseClient.Classes
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        //filter
+        public void Filter()
+        {
+
         }
     }
 }
