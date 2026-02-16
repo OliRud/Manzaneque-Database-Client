@@ -44,6 +44,7 @@
             btnEnterQuery = new Button();
             btnBackup = new Button();
             btnCreateReport = new Button();
+            btnResolve = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             btnShowTickets.FlatStyle = FlatStyle.Popup;
             btnShowTickets.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowTickets.ForeColor = Color.White;
-            btnShowTickets.Location = new Point(49, 80);
+            btnShowTickets.Location = new Point(116, 80);
             btnShowTickets.Name = "btnShowTickets";
             btnShowTickets.Size = new Size(100, 46);
             btnShowTickets.TabIndex = 2;
@@ -88,7 +89,7 @@
             btnShowEmployees.FlatStyle = FlatStyle.Popup;
             btnShowEmployees.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowEmployees.ForeColor = Color.White;
-            btnShowEmployees.Location = new Point(155, 80);
+            btnShowEmployees.Location = new Point(222, 80);
             btnShowEmployees.Name = "btnShowEmployees";
             btnShowEmployees.Size = new Size(100, 46);
             btnShowEmployees.TabIndex = 3;
@@ -101,7 +102,7 @@
             btnShowHardware.FlatStyle = FlatStyle.Popup;
             btnShowHardware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowHardware.ForeColor = Color.White;
-            btnShowHardware.Location = new Point(367, 80);
+            btnShowHardware.Location = new Point(434, 80);
             btnShowHardware.Name = "btnShowHardware";
             btnShowHardware.Size = new Size(100, 46);
             btnShowHardware.TabIndex = 5;
@@ -114,7 +115,7 @@
             btnShowOffices.FlatStyle = FlatStyle.Popup;
             btnShowOffices.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowOffices.ForeColor = Color.White;
-            btnShowOffices.Location = new Point(261, 80);
+            btnShowOffices.Location = new Point(328, 80);
             btnShowOffices.Name = "btnShowOffices";
             btnShowOffices.Size = new Size(100, 46);
             btnShowOffices.TabIndex = 4;
@@ -127,7 +128,7 @@
             btnShowTechnicians.FlatStyle = FlatStyle.Popup;
             btnShowTechnicians.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowTechnicians.ForeColor = Color.White;
-            btnShowTechnicians.Location = new Point(579, 80);
+            btnShowTechnicians.Location = new Point(646, 80);
             btnShowTechnicians.Name = "btnShowTechnicians";
             btnShowTechnicians.Size = new Size(100, 46);
             btnShowTechnicians.TabIndex = 7;
@@ -140,7 +141,7 @@
             btnShowSoftware.FlatStyle = FlatStyle.Popup;
             btnShowSoftware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowSoftware.ForeColor = Color.White;
-            btnShowSoftware.Location = new Point(473, 80);
+            btnShowSoftware.Location = new Point(540, 80);
             btnShowSoftware.Name = "btnShowSoftware";
             btnShowSoftware.Size = new Size(100, 46);
             btnShowSoftware.TabIndex = 6;
@@ -153,7 +154,7 @@
             btnShowSkillset.FlatStyle = FlatStyle.Popup;
             btnShowSkillset.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowSkillset.ForeColor = Color.White;
-            btnShowSkillset.Location = new Point(685, 80);
+            btnShowSkillset.Location = new Point(752, 80);
             btnShowSkillset.Name = "btnShowSkillset";
             btnShowSkillset.Size = new Size(100, 46);
             btnShowSkillset.TabIndex = 8;
@@ -178,7 +179,7 @@
             dataGridView.Location = new Point(12, 227);
             dataGridView.Name = "dataGridView";
             dataGridView.RowTemplate.Height = 25;
-            dataGridView.Size = new Size(810, 343);
+            dataGridView.Size = new Size(960, 343);
             dataGridView.TabIndex = 10;
             // 
             // btnCreateTicket
@@ -198,11 +199,11 @@
             btnEnterQuery.BackColor = Color.FromArgb(120, 204, 155);
             btnEnterQuery.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnEnterQuery.ForeColor = Color.White;
-            btnEnterQuery.Location = new Point(206, 160);
+            btnEnterQuery.Location = new Point(438, 160);
             btnEnterQuery.Name = "btnEnterQuery";
             btnEnterQuery.Size = new Size(188, 49);
             btnEnterQuery.TabIndex = 12;
-            btnEnterQuery.Text = "Enter Query";
+            btnEnterQuery.Text = "Custom Query";
             btnEnterQuery.UseVisualStyleBackColor = false;
             // 
             // btnBackup
@@ -210,7 +211,7 @@
             btnBackup.BackColor = Color.FromArgb(120, 204, 155);
             btnBackup.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnBackup.ForeColor = Color.White;
-            btnBackup.Location = new Point(655, 160);
+            btnBackup.Location = new Point(805, 160);
             btnBackup.Name = "btnBackup";
             btnBackup.Size = new Size(167, 49);
             btnBackup.TabIndex = 13;
@@ -222,19 +223,32 @@
             btnCreateReport.BackColor = Color.FromArgb(120, 204, 155);
             btnCreateReport.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateReport.ForeColor = Color.White;
-            btnCreateReport.Location = new Point(482, 160);
+            btnCreateReport.Location = new Point(632, 160);
             btnCreateReport.Name = "btnCreateReport";
             btnCreateReport.Size = new Size(167, 49);
             btnCreateReport.TabIndex = 14;
             btnCreateReport.Text = "Create Report";
             btnCreateReport.UseVisualStyleBackColor = false;
             // 
+            // btnResolve
+            // 
+            btnResolve.BackColor = Color.Tomato;
+            btnResolve.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnResolve.ForeColor = Color.White;
+            btnResolve.Location = new Point(206, 160);
+            btnResolve.Name = "btnResolve";
+            btnResolve.Size = new Size(188, 49);
+            btnResolve.TabIndex = 15;
+            btnResolve.Text = "Resolve Ticket";
+            btnResolve.UseVisualStyleBackColor = false;
+            // 
             // DatabaseMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
-            ClientSize = new Size(834, 582);
+            ClientSize = new Size(984, 582);
+            Controls.Add(btnResolve);
             Controls.Add(btnCreateReport);
             Controls.Add(btnBackup);
             Controls.Add(btnEnterQuery);
@@ -251,7 +265,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "DatabaseMain";
-            Text = "Form1";
+            Text = "Welcome !";
             FormClosing += DatabaseMain_FormClosing;
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
@@ -275,5 +289,6 @@
         private Button btnEnterQuery;
         private Button btnBackup;
         private Button btnCreateReport;
+        private Button btnResolve;
     }
 }

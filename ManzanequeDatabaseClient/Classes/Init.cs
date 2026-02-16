@@ -13,77 +13,7 @@ namespace ManzanequeDatabaseClient.Classes
             RunSql execute = new RunSql();
             execute.initialise();
 
-            string create_database = """
-                -- Create Offices Table
-                CREATE TABLE IF NOT EXISTS tblOffices (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    LocationName VARCHAR(100) UNIQUE,
-                    Address VARCHAR(100),
-                    Specialisation VARCHAR(50),
-                    ContactNumber VARCHAR(15)
-                );
-
-                -- Create Employees Table
-                CREATE TABLE IF NOT EXISTS tblEmployees (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Name VARCHAR(100),
-                    ContactNumber VARCHAR(20),
-                    Email VARCHAR(100),
-                    Location VARCHAR(100),
-                    EmploymentStart DATE,
-                    EmploymentEnd DATE DEFAULT NULL,
-                    JobTitle VARCHAR(50),
-                    Department VARCHAR(50),
-                    FOREIGN KEY (Location) REFERENCES tblOffices(LocationName)
-                );
-
-                -- Create Hardware Table
-                CREATE TABLE IF NOT EXISTS tblHardware (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Name VARCHAR(80),
-                    SerialNumber INT UNIQUE -- Unique for ticket tracking
-                );
-
-                -- Create Software Table
-                CREATE TABLE IF NOT EXISTS tblSoftware (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Type VARCHAR(60),
-                    AssetID VARCHAR(10) UNIQUE
-                );
-
-                -- Create Technicians Table
-                CREATE TABLE IF NOT EXISTS tblTechnicians (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Name VARCHAR(100)
-                );
-
-                -- Create Specialism Table (linking to Technicians)
-                CREATE TABLE IF NOT EXISTS tblSpecialism (
-                    TechnicianID INT,
-                    Specialty VARCHAR(100),
-                    PRIMARY KEY (TechnicianID, Specialty),
-                    FOREIGN KEY (TechnicianID) REFERENCES tblTechnicians(ID)
-                );
-
-                -- Create Tickets Table
-                CREATE TABLE IF NOT EXISTS tblTickets (
-                    TicketID INT AUTO_INCREMENT PRIMARY KEY,
-                    EmployeeID INT,
-                    OperatorID INT, -- Usually links to another Employee or Technician
-                    Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    Location VARCHAR(100),
-                    HW_serialnumber INT,
-                    SW_AssetID VARCHAR(10),
-                    Note VARCHAR(250),
-                    TechnicianAssigned INT,
-                    Status BOOLEAN DEFAULT FALSE,
-                    FOREIGN KEY (EmployeeID) REFERENCES tblEmployees(ID),
-                    FOREIGN KEY (HW_serialnumber) REFERENCES tblHardware(SerialNumber),
-                    FOREIGN KEY (SW_AssetID) REFERENCES tblSoftware(AssetID),
-                    FOREIGN KEY (TechnicianAssigned) REFERENCES tblTechnicians(ID)
-                );
-
-                """;
+            string create_database = """s""";
 
             execute.Push(create_database);
 
