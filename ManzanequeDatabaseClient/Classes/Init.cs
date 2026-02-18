@@ -13,7 +13,86 @@ namespace ManzanequeDatabaseClient.Classes
             RunSql execute = new RunSql();
             execute.initialise();
 
-            string create_database = """s""";
+            string create_database = """
+                CREATE TABLE IF NOT EXISTS tblOffices (
+                    ID INT AUTO_INCREMENT PRIMARY KEY,
+                    LocationName VARCHAR(100) UNIQUE, -- Added UNIQUE to allow FK reference
+                    Address VARCHAR(100),
+                    Specialisation VARCHAR(50),
+                    ContactNumber VARCHAR(15)
+                );
+
+                CREATE TABLE IF NOT EXISTS tblHardware (
+                    SerialNumber INT PRIMARY KEY,
+                    HardwareType VARCHAR(50)
+                );
+
+                CREATE TABLE IF NOT EXISTS tblSoftware (
+                    AssetID INT AUTO_INCREMENT PRIMARY KEY,
+                    OS VARCHAR(50),
+                    Application VARCHAR(50),
+                    LicenceKey VARCHAR(10)
+                );
+
+                CREATE TABLE IF NOT EXISTS tblTechnicianPool (
+                    ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Name VARCHAR(100)
+                );
+
+                CREATE TABLE IF NOT EXISTS tblEmployees (
+                    ID INT AUTO_INCREMENT PRIMARY KEY,
+                    Name VARCHAR(100),
+                    ContactNumber VARCHAR(20),
+                    Email VARCHAR(100),
+                    Location VARCHAR(100),
+                    EmploymentStart DATE,
+                    EmploymentEnd DATE DEFAULT NULL,
+                    JobTitle VARCHAR(50),
+                    Department VARCHAR(50),
+                    FOREIGN KEY (Location) REFERENCES tblOffices(LocationName)
+                );
+
+                -- Technicians linked to the Pool
+                CREATE TABLE IF NOT EXISTS tblTechnicians (
+                    ID INT,
+                    Name VARCHAR(100),
+                    specialism VARCHAR(50),
+                    PRIMARY KEY (ID, specialism),
+                    FOREIGN KEY (ID) REFERENCES tblTechnicianPool(ID)
+                );
+
+                CREATE TABLE IF NOT EXISTS tblTickets (
+                    TicketID INT AUTO_INCREMENT PRIMARY KEY,
+                    DateofCall DATE DEFAULT (CURRENT_DATE),
+                    TimeofCall TIME DEFAULT (CURRENT_TIME),
+                    OperatorID INT,
+                    EmployeeID INT,
+                    EmployeeName VARCHAR(100),
+                    ContactNumber VARCHAR(20),
+                    Email VARCHAR(100),
+                    OfficeName VARCHAR(100),
+                    SerialNumber INT,
+                    HardwareType VARCHAR(50),
+                    SoftwareID INT DEFAULT NULL,
+                    OperatingSystem VARCHAR(50) DEFAULT NULL,
+                    SoftwareName VARCHAR(50) DEFAULT NULL,
+                    SoftwareLicense VARCHAR(10) DEFAULT NULL,
+                    TechnicianAssigned INT,
+                    Note VARCHAR(200),
+                    Status BOOL,
+                    DateResolved DATE DEFAULT NULL,
+                    TimeResolved TIME DEFAULT NULL,
+                    TimeToResolve INT DEFAULT NULL,
+                    Resolution VARCHAR(200) DEFAULT NULL,
+
+                    -- Foreign Key Constraints
+                    FOREIGN KEY (EmployeeID) REFERENCES tblEmployees(ID),
+                    FOREIGN KEY (OfficeName) REFERENCES tblOffices(LocationName),
+                    FOREIGN KEY (SerialNumber) REFERENCES tblHardware(SerialNumber),
+                    FOREIGN KEY (SoftwareID) REFERENCES tblSoftware(AssetID),
+                    FOREIGN KEY (TechnicianAssigned) REFERENCES tblTechnicianPool(ID)
+                );
+                """;
 
             execute.Push(create_database);
 
@@ -36,8 +115,11 @@ namespace ManzanequeDatabaseClient.Classes
                 ('Southampton Hub', '40 High St, Southampton', 'Maritime IT', '023 8096 0013'),
                 ('York Branch', '31 Stonegate, York', 'Administration', '01904 496014');
 
+
+                DELETE FROM tblEmployees;
+                ALTER TABLE tblEmployees AUTO_INCREMENT = 1;
                 
-                INSERT IGNORE INTO tblEmployees (Name, ContactNumber, Email, Location, EmploymentStart, EmploymentEnd, JobTitle, Department)
+                INSERT INTO tblEmployees (Name, ContactNumber, Email, Location, EmploymentStart, EmploymentEnd, JobTitle, Department)
                 VALUES 
                 -- London Central
                 ('Arthur Pendragon', '07700 900101', 'a.pendragon@ldn.com', 'London Central', '2024-01-01', '2025-12-31', 'IT Lead', 'IT'),
@@ -145,7 +227,110 @@ namespace ManzanequeDatabaseClient.Classes
                 ('Wyatt Earp', '07700 901505', 'w.earp@yrk.com', 'York Branch', '2024-01-01', NULL, 'DevOps Engineer', 'Software');
                 
                 
+                -- INSERT IGNORE INTO tblTechnicianPool (Name) VALUES 
+                -- ('Elena Rodriguez'),
+                -- ('Marcus Chen'),
+                -- ('Sarah Jenkins'),
+                -- ('Alistair Vance'),
+                -- ('Priya Kapoor');
 
+                INSERT IGNORE INTO tblTechnicians (ID, Name, specialism) VALUES 
+                -- Elena Rodriguez (ID 1)
+                (1, 'Elena Rodriguez', 'network'),
+                (1, 'Elena Rodriguez', 'os'),
+
+                -- Marcus Chen (ID 2)
+                (2, 'Marcus Chen', 'application'),
+                (2, 'Marcus Chen', 'office'),
+
+                -- Sarah Jenkins (ID 3)
+                (3, 'Sarah Jenkins', 'network'),
+                (3, 'Sarah Jenkins', 'application'),
+
+                -- Alistair Vance (ID 4)
+                (4, 'Alistair Vance', 'os'),
+                (4, 'Alistair Vance', 'office'),
+
+                -- Priya Kapoor (ID 5)
+                (5, 'Priya Kapoor', 'network'),
+                (5, 'Priya Kapoor', 'os'),
+                (5, 'Priya Kapoor', 'application');
+
+
+                INSERT IGNORE INTO tblSoftware (OS, Application, LicenceKey) VALUES 
+                -- Block 1
+                ('Windows 11', 'Windows 11 Pro', 'W26MS-V9N'),
+                ('macOS', 'macOS Sonoma', 'APPLE-0192'),
+                ('Linux', 'Ubuntu 24.04 LTS', 'OPEN-SRCE'),
+                ('Windows 11', 'Microsoft Excel 2024', 'XLS-9921-X'),
+                ('macOS', 'Numbers', 'APPL-NUMB'),
+                ('Windows 11', 'Microsoft Word 2024', 'DOC-8832-W'),
+                ('Linux', 'LibreOffice Writer', 'LIBRE-WRIT'),
+                ('macOS', 'Keynote', 'APPL-KEYN'),
+                ('Windows 11', 'Microsoft PowerPoint', 'PPT-7743-P'),
+                ('Windows 11', 'Microsoft Outlook', 'OUT-1122-M'),
+                ('macOS', 'Fantastical', 'FANT-9901'),
+                ('Windows 11', 'Microsoft Project', 'PROJ-5566'),
+                ('Linux', 'OpenProject', 'OPEN-PROJ'), -- Added the missing comma here
+
+                -- Block 2
+                ('Linux', 'Red Hat Enterprise Linux 9', 'RHEL-9021'),
+                ('Windows Server', 'Windows Server 2022', 'SVR-8822-X'),
+                ('Windows 11', 'Google Sheets (Desktop)', 'G-SUITE-SH'),
+                ('Linux', 'Gnumeric', 'GNUM-0012'),
+                ('macOS', 'Pages', 'APPL-PAGE'),
+                ('Windows 11', 'Corel WordPerfect', 'CW-9921-WP'),
+                ('Linux', 'LibreOffice Impress', 'LIBRE-IMPR'),
+                ('Windows 11', 'Prezi Desktop', 'PREZ-3341'),
+                ('macOS', 'Adobe Express', 'ADOB-EXPR'),
+                ('Windows 11', 'Clockify Desktop', 'CLOK-7721'),
+                ('macOS', 'Things 3', 'THNG-4451'),
+                ('Linux', 'Super Productivity', 'SUPR-PRDT'),
+                ('Windows 11', 'Asana Desktop', 'ASAN-1192'),
+                ('macOS', 'Monday.com Desktop', 'MOND-0021'),
+                ('Windows 11', 'Trello Desktop', 'TRLO-9932');
+
+                
+                INSERT IGNORE INTO tblHardware (SerialNumber, HardwareType) VALUES 
+                -- PCs (10 entries)
+                (1001, 'PC'), (1002, 'PC'), (1003, 'PC'), (1004, 'PC'), (1005, 'PC'), 
+                (1006, 'PC'), (1007, 'PC'), (1008, 'PC'), (1009, 'PC'), (1010, 'PC'),
+
+                -- Laptops (10 entries)
+                (2001, 'Laptop'), (2002, 'Laptop'), (2003, 'Laptop'), (2004, 'Laptop'), (2005, 'Laptop'),
+                (2006, 'Laptop'), (2007, 'Laptop'), (2008, 'Laptop'), (2009, 'Laptop'), (2010, 'Laptop'),
+
+                -- Printers (10 entries)
+                (3001, 'Printer'), (3002, 'Printer'), (3003, 'Printer'), (3004, 'Printer'), (3005, 'Printer'),
+                (3006, 'Printer'), (3007, 'Printer'), (3008, 'Printer'), (3009, 'Printer'), (3010, 'Printer'),
+
+                -- Peripherals (10 entries)
+                (4001, 'Peripherals'), (4002, 'Peripherals'), (4003, 'Peripherals'), (4004, 'Peripherals'), (4005, 'Peripherals'),
+                (4006, 'Peripherals'), (4007, 'Peripherals'), (4008, 'Peripherals'), (4009, 'Peripherals'), (4010, 'Peripherals'),
+
+                -- Interactive Whiteboards (10 entries)
+                (5001, 'Interactive Whiteboard'), (5002, 'Interactive Whiteboard'), (5003, 'Interactive Whiteboard'), (5004, 'Interactive Whiteboard'), (5005, 'Interactive Whiteboard'),
+                (5006, 'Interactive Whiteboard'), (5007, 'Interactive Whiteboard'), (5008, 'Interactive Whiteboard'), (5009, 'Interactive Whiteboard'), (5010, 'Interactive Whiteboard'),
+
+                -- Routers (10 entries)
+                (6001, 'Router'), (6002, 'Router'), (6003, 'Router'), (6004, 'Router'), (6005, 'Router'),
+                (6006, 'Router'), (6007, 'Router'), (6008, 'Router'), (6009, 'Router'), (6010, 'Router'),
+
+                -- Switches (10 entries)
+                (7001, 'Switch'), (7002, 'Switch'), (7003, 'Switch'), (7004, 'Switch'), (7005, 'Switch'),
+                (7006, 'Switch'), (7007, 'Switch'), (7008, 'Switch'), (7009, 'Switch'), (7010, 'Switch'),
+
+                -- Wireless Access Points (10 entries)
+                (8001, 'Wireless Access Point'), (8002, 'Wireless Access Point'), (8003, 'Wireless Access Point'), (8004, 'Wireless Access Point'), (8005, 'Wireless Access Point'),
+                (8006, 'Wireless Access Point'), (8007, 'Wireless Access Point'), (8008, 'Wireless Access Point'), (8009, 'Wireless Access Point'), (8010, 'Wireless Access Point'),
+
+                -- Firewalls (10 entries)
+                (9001, 'Firewall'), (9002, 'Firewall'), (9003, 'Firewall'), (9004, 'Firewall'), (9005, 'Firewall'),
+                (9006, 'Firewall'), (9007, 'Firewall'), (9008, 'Firewall'), (9009, 'Firewall'), (9010, 'Firewall'),
+
+                -- Cables (10 entries)
+                (1101, 'Cables'), (1102, 'Cables'), (1103, 'Cables'), (1104, 'Cables'), (1105, 'Cables'),
+                (1106, 'Cables'), (1107, 'Cables'), (1108, 'Cables'), (1109, 'Cables'), (1110, 'Cables');
                 """;
 
             execute.Push(dummy_Data);
