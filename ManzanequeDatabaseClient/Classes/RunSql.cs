@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -15,24 +17,47 @@ namespace ManzanequeDatabaseClient.Classes
         MySqlCommand cmd;
         MySqlConnection con = new MySqlConnection();
 
+        object result = null;
+
+        //establishes connection
         public void initialise()
         {
             con.ConnectionString = ServerDetails.connstring;
         }
 
         // for grabbing data from the database
-        public void Pull(string area)
+        public DataTable Pull(string command, string parameter1, string pam1Value, string parameter2, string pam2Value)
         {
+            DataTable table = new DataTable();
+
             try
             {
-                con.Open();
-                con.Close();
+                using (MySqlConnection con = new MySqlConnection(ServerDetails.connstring))
+                {
+                    con.Open();
+
+                    using (MySqlCommand cmd = new MySqlCommand(command, con))
+                    {
+                        // Add parameters only if provided
+                        if (!string.IsNullOrEmpty(parameter1))
+                            cmd.Parameters.AddWithValue(parameter1, pam1Value);
+
+                        if (!string.IsNullOrEmpty(parameter2))
+                            cmd.Parameters.AddWithValue(parameter2, pam2Value);
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(table);
+                        }
+                    }
+                }
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Debug.WriteLine("Error: " + ex.Message);
             }
-            
+
+            return table;
         }
 
         // for pushing set commands to the database

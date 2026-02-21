@@ -37,7 +37,6 @@
             btnShowOffices = new Button();
             btnShowTechnicians = new Button();
             btnShowSoftware = new Button();
-            btnShowSkillset = new Button();
             label3 = new Label();
             dataGridView = new DataGridView();
             btnCreateTicket = new Button();
@@ -76,7 +75,7 @@
             btnShowTickets.FlatStyle = FlatStyle.Popup;
             btnShowTickets.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowTickets.ForeColor = Color.White;
-            btnShowTickets.Location = new Point(116, 80);
+            btnShowTickets.Location = new Point(184, 80);
             btnShowTickets.Name = "btnShowTickets";
             btnShowTickets.Size = new Size(100, 46);
             btnShowTickets.TabIndex = 2;
@@ -89,12 +88,13 @@
             btnShowEmployees.FlatStyle = FlatStyle.Popup;
             btnShowEmployees.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowEmployees.ForeColor = Color.White;
-            btnShowEmployees.Location = new Point(222, 80);
+            btnShowEmployees.Location = new Point(290, 80);
             btnShowEmployees.Name = "btnShowEmployees";
             btnShowEmployees.Size = new Size(100, 46);
             btnShowEmployees.TabIndex = 3;
             btnShowEmployees.Text = "Employees";
             btnShowEmployees.UseVisualStyleBackColor = false;
+            btnShowEmployees.Click += btnShowEmployees_Click;
             // 
             // btnShowHardware
             // 
@@ -102,12 +102,13 @@
             btnShowHardware.FlatStyle = FlatStyle.Popup;
             btnShowHardware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowHardware.ForeColor = Color.White;
-            btnShowHardware.Location = new Point(434, 80);
+            btnShowHardware.Location = new Point(502, 80);
             btnShowHardware.Name = "btnShowHardware";
             btnShowHardware.Size = new Size(100, 46);
             btnShowHardware.TabIndex = 5;
             btnShowHardware.Text = "Hardware";
             btnShowHardware.UseVisualStyleBackColor = false;
+            btnShowHardware.Click += btnShowHardware_Click;
             // 
             // btnShowOffices
             // 
@@ -115,12 +116,13 @@
             btnShowOffices.FlatStyle = FlatStyle.Popup;
             btnShowOffices.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowOffices.ForeColor = Color.White;
-            btnShowOffices.Location = new Point(328, 80);
+            btnShowOffices.Location = new Point(396, 80);
             btnShowOffices.Name = "btnShowOffices";
             btnShowOffices.Size = new Size(100, 46);
             btnShowOffices.TabIndex = 4;
             btnShowOffices.Text = "Offices";
             btnShowOffices.UseVisualStyleBackColor = false;
+            btnShowOffices.Click += btnShowOffices_Click;
             // 
             // btnShowTechnicians
             // 
@@ -128,12 +130,13 @@
             btnShowTechnicians.FlatStyle = FlatStyle.Popup;
             btnShowTechnicians.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowTechnicians.ForeColor = Color.White;
-            btnShowTechnicians.Location = new Point(646, 80);
+            btnShowTechnicians.Location = new Point(714, 80);
             btnShowTechnicians.Name = "btnShowTechnicians";
             btnShowTechnicians.Size = new Size(100, 46);
             btnShowTechnicians.TabIndex = 7;
             btnShowTechnicians.Text = "Technicians";
             btnShowTechnicians.UseVisualStyleBackColor = false;
+            btnShowTechnicians.Click += btnShowTechnicians_Click;
             // 
             // btnShowSoftware
             // 
@@ -141,25 +144,13 @@
             btnShowSoftware.FlatStyle = FlatStyle.Popup;
             btnShowSoftware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnShowSoftware.ForeColor = Color.White;
-            btnShowSoftware.Location = new Point(540, 80);
+            btnShowSoftware.Location = new Point(608, 80);
             btnShowSoftware.Name = "btnShowSoftware";
             btnShowSoftware.Size = new Size(100, 46);
             btnShowSoftware.TabIndex = 6;
             btnShowSoftware.Text = "Software";
             btnShowSoftware.UseVisualStyleBackColor = false;
-            // 
-            // btnShowSkillset
-            // 
-            btnShowSkillset.BackColor = Color.FromArgb(95, 185, 137);
-            btnShowSkillset.FlatStyle = FlatStyle.Popup;
-            btnShowSkillset.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnShowSkillset.ForeColor = Color.White;
-            btnShowSkillset.Location = new Point(752, 80);
-            btnShowSkillset.Name = "btnShowSkillset";
-            btnShowSkillset.Size = new Size(100, 46);
-            btnShowSkillset.TabIndex = 8;
-            btnShowSkillset.Text = "Skillset";
-            btnShowSkillset.UseVisualStyleBackColor = false;
+            btnShowSoftware.Click += btnShowSoftware_Click;
             // 
             // label3
             // 
@@ -255,7 +246,6 @@
             Controls.Add(btnCreateTicket);
             Controls.Add(dataGridView);
             Controls.Add(label3);
-            Controls.Add(btnShowSkillset);
             Controls.Add(btnShowTechnicians);
             Controls.Add(btnShowSoftware);
             Controls.Add(btnShowHardware);
@@ -282,7 +272,6 @@
         private Button btnShowOffices;
         private Button btnShowTechnicians;
         private Button btnShowSoftware;
-        private Button btnShowSkillset;
         private Label label3;
         private DataGridView dataGridView;
         private Button btnCreateTicket;
