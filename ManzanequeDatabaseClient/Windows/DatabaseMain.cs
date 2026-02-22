@@ -67,5 +67,9 @@ namespace ManzanequeDatabaseClient.Windows
         {
             ChangeView("tblTechnicians");
         }
+        private void btnShowTickets_Click(object sender, EventArgs e)
+        {
+            ChangeView("tblTickets");
+        }
     }
 }

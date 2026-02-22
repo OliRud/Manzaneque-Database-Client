@@ -71,6 +71,7 @@
             // 
             // btnShowTickets
             // 
+            btnShowTickets.Anchor = AnchorStyles.Top;
             btnShowTickets.BackColor = Color.FromArgb(95, 185, 137);
             btnShowTickets.FlatStyle = FlatStyle.Popup;
             btnShowTickets.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -81,9 +82,11 @@
             btnShowTickets.TabIndex = 2;
             btnShowTickets.Text = "Tickets";
             btnShowTickets.UseVisualStyleBackColor = false;
+            btnShowTickets.Click += btnShowTickets_Click;
             // 
             // btnShowEmployees
             // 
+            btnShowEmployees.Anchor = AnchorStyles.Top;
             btnShowEmployees.BackColor = Color.FromArgb(95, 185, 137);
             btnShowEmployees.FlatStyle = FlatStyle.Popup;
             btnShowEmployees.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
@@ -98,6 +101,7 @@
             // 
             // btnShowHardware
             // 
+            btnShowHardware.Anchor = AnchorStyles.Top;
             btnShowHardware.BackColor = Color.FromArgb(95, 185, 137);
             btnShowHardware.FlatStyle = FlatStyle.Popup;
             btnShowHardware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -112,6 +116,7 @@
             // 
             // btnShowOffices
             // 
+            btnShowOffices.Anchor = AnchorStyles.Top;
             btnShowOffices.BackColor = Color.FromArgb(95, 185, 137);
             btnShowOffices.FlatStyle = FlatStyle.Popup;
             btnShowOffices.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -126,6 +131,7 @@
             // 
             // btnShowTechnicians
             // 
+            btnShowTechnicians.Anchor = AnchorStyles.Top;
             btnShowTechnicians.BackColor = Color.FromArgb(95, 185, 137);
             btnShowTechnicians.FlatStyle = FlatStyle.Popup;
             btnShowTechnicians.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
@@ -140,6 +146,7 @@
             // 
             // btnShowSoftware
             // 
+            btnShowSoftware.Anchor = AnchorStyles.Top;
             btnShowSoftware.BackColor = Color.FromArgb(95, 185, 137);
             btnShowSoftware.FlatStyle = FlatStyle.Popup;
             btnShowSoftware.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -165,6 +172,7 @@
             // 
             // dataGridView
             // 
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView.BackgroundColor = SystemColors.Menu;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 227);
@@ -175,6 +183,7 @@
             // 
             // btnCreateTicket
             // 
+            btnCreateTicket.Anchor = AnchorStyles.Top;
             btnCreateTicket.BackColor = Color.RoyalBlue;
             btnCreateTicket.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateTicket.ForeColor = Color.White;
@@ -187,6 +196,7 @@
             // 
             // btnEnterQuery
             // 
+            btnEnterQuery.Anchor = AnchorStyles.Top;
             btnEnterQuery.BackColor = Color.FromArgb(120, 204, 155);
             btnEnterQuery.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnEnterQuery.ForeColor = Color.White;
@@ -199,6 +209,7 @@
             // 
             // btnBackup
             // 
+            btnBackup.Anchor = AnchorStyles.Top;
             btnBackup.BackColor = Color.FromArgb(120, 204, 155);
             btnBackup.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnBackup.ForeColor = Color.White;
@@ -211,6 +222,7 @@
             // 
             // btnCreateReport
             // 
+            btnCreateReport.Anchor = AnchorStyles.Top;
             btnCreateReport.BackColor = Color.FromArgb(120, 204, 155);
             btnCreateReport.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnCreateReport.ForeColor = Color.White;
@@ -223,6 +235,7 @@
             // 
             // btnResolve
             // 
+            btnResolve.Anchor = AnchorStyles.Top;
             btnResolve.BackColor = Color.Tomato;
             btnResolve.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnResolve.ForeColor = Color.White;

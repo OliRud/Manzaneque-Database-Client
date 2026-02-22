@@ -331,6 +331,29 @@ namespace ManzanequeDatabaseClient.Classes
                 -- Cables (10 entries)
                 (1101, 'Cables'), (1102, 'Cables'), (1103, 'Cables'), (1104, 'Cables'), (1105, 'Cables'),
                 (1106, 'Cables'), (1107, 'Cables'), (1108, 'Cables'), (1109, 'Cables'), (1110, 'Cables');
+
+
+                INSERT IGNORE INTO tblTickets (
+                    DateofCall, TimeofCall, OperatorID, 
+                    EmployeeID, EmployeeName, ContactNumber, Email, OfficeName, 
+                    SerialNumber, HardwareType, 
+                    SoftwareID, OperatingSystem, SoftwareName, SoftwareLicense, 
+                    TechnicianAssigned, Note, Status
+                )
+                SELECT 
+                    CURDATE(), CURTIME(), 105,              -- Static: Date, Time, Operator ID
+                    e.ID, e.Name, e.ContactNumber, e.Email, e.Location, -- From tblEmployees
+                    h.SerialNumber, h.HardwareType,         -- From tblHardware
+                    s.AssetID, s.OS, s.Application, s.LicenceKey, -- From tblSoftware
+                    1,                                      -- Static: Technician ID
+                    'System freezes when opening large workbooks.', -- Static: The Note
+                    0                                       -- Static: Status (Open)
+                FROM tblEmployees e
+                JOIN tblHardware h ON h.SerialNumber = 2001
+                JOIN tblSoftware s ON s.AssetID = 4
+                WHERE e.ID = 55;
+
+                select * from tbltickets;
                 """;
 
             execute.Push(dummy_Data);
