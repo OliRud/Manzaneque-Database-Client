@@ -35,6 +35,8 @@ namespace ManzanequeDatabaseClient.Windows
             root.Close();
         }
 
+
+        // table view
         private void ChangeView(string view_to_change) //updating the table with new information
         {
             currentWindow = view_to_change;
@@ -70,6 +72,14 @@ namespace ManzanequeDatabaseClient.Windows
         private void btnShowTickets_Click(object sender, EventArgs e)
         {
             ChangeView("tblTickets");
+        }
+
+
+        // opening windows
+        private void btnCreateTicket_Click(object sender, EventArgs e)
+        {
+            CreateTicket createTicket = new CreateTicket();
+            createTicket.Show();
         }
     }
 }

@@ -34,15 +34,15 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
-            numericUpDown4 = new NumericUpDown();
-            textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
+            entEmployeeID = new NumericUpDown();
+            entSerialNumber = new NumericUpDown();
+            entAssetID = new NumericUpDown();
+            entTechnicianID = new NumericUpDown();
+            entNote = new TextBox();
+            ((System.ComponentModel.ISupportInitialize)entEmployeeID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)entSerialNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)entAssetID).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)entTechnicianID).BeginInit();
             SuspendLayout();
             // 
             // btnSubmit
@@ -53,6 +53,7 @@
             btnSubmit.TabIndex = 0;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // label1
             // 
@@ -80,9 +81,9 @@
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(12, 141);
             label3.Name = "label3";
-            label3.Size = new Size(287, 20);
+            label3.Size = new Size(303, 20);
             label3.TabIndex = 3;
-            label3.Text = "Enter the Asset ID of the relevant software";
+            label3.Text = "Enter the Asset ID of the concerned software";
             // 
             // label4
             // 
@@ -104,42 +105,49 @@
             label5.TabIndex = 5;
             label5.Text = "Note (200 Characters)";
             // 
-            // numericUpDown1
+            // entEmployeeID
             // 
-            numericUpDown1.Location = new Point(12, 36);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(154, 23);
-            numericUpDown1.TabIndex = 6;
+            entEmployeeID.Location = new Point(12, 36);
+            entEmployeeID.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            entEmployeeID.Name = "entEmployeeID";
+            entEmployeeID.Size = new Size(154, 23);
+            entEmployeeID.TabIndex = 6;
+            entEmployeeID.ValueChanged += entEmployeeID_ValueChanged;
             // 
-            // numericUpDown2
+            // entSerialNumber
             // 
-            numericUpDown2.Location = new Point(12, 100);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(154, 23);
-            numericUpDown2.TabIndex = 7;
+            entSerialNumber.Location = new Point(12, 100);
+            entSerialNumber.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            entSerialNumber.Name = "entSerialNumber";
+            entSerialNumber.Size = new Size(154, 23);
+            entSerialNumber.TabIndex = 7;
+            entSerialNumber.ValueChanged += entSerialNumber_ValueChanged;
             // 
-            // numericUpDown3
+            // entAssetID
             // 
-            numericUpDown3.Location = new Point(12, 164);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(154, 23);
-            numericUpDown3.TabIndex = 8;
+            entAssetID.Location = new Point(12, 164);
+            entAssetID.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            entAssetID.Name = "entAssetID";
+            entAssetID.Size = new Size(154, 23);
+            entAssetID.TabIndex = 8;
             // 
-            // numericUpDown4
+            // entTechnicianID
             // 
-            numericUpDown4.Location = new Point(13, 251);
-            numericUpDown4.Name = "numericUpDown4";
-            numericUpDown4.Size = new Size(154, 23);
-            numericUpDown4.TabIndex = 9;
+            entTechnicianID.Location = new Point(13, 251);
+            entTechnicianID.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            entTechnicianID.Name = "entTechnicianID";
+            entTechnicianID.Size = new Size(154, 23);
+            entTechnicianID.TabIndex = 9;
+            entTechnicianID.ValueChanged += entTechnicianID_ValueChanged;
             // 
-            // textBox1
+            // entNote
             // 
-            textBox1.Location = new Point(13, 315);
-            textBox1.MaxLength = 200;
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(400, 165);
-            textBox1.TabIndex = 10;
+            entNote.Location = new Point(13, 315);
+            entNote.MaxLength = 200;
+            entNote.Multiline = true;
+            entNote.Name = "entNote";
+            entNote.Size = new Size(400, 165);
+            entNote.TabIndex = 10;
             // 
             // CreateTicket
             // 
@@ -147,11 +155,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
             ClientSize = new Size(475, 557);
-            Controls.Add(textBox1);
-            Controls.Add(numericUpDown4);
-            Controls.Add(numericUpDown3);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown1);
+            Controls.Add(entNote);
+            Controls.Add(entTechnicianID);
+            Controls.Add(entAssetID);
+            Controls.Add(entSerialNumber);
+            Controls.Add(entEmployeeID);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -160,10 +168,10 @@
             Controls.Add(btnSubmit);
             Name = "CreateTicket";
             Text = "Create Ticket";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)entEmployeeID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)entSerialNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)entAssetID).EndInit();
+            ((System.ComponentModel.ISupportInitialize)entTechnicianID).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,10 +184,10 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown3;
-        private NumericUpDown numericUpDown4;
-        private TextBox textBox1;
+        private NumericUpDown entEmployeeID;
+        private NumericUpDown entSerialNumber;
+        private NumericUpDown entAssetID;
+        private NumericUpDown entTechnicianID;
+        private TextBox entNote;
     }
 }

@@ -352,8 +352,6 @@ namespace ManzanequeDatabaseClient.Classes
                 JOIN tblHardware h ON h.SerialNumber = 2001
                 JOIN tblSoftware s ON s.AssetID = 4
                 WHERE e.ID = 55;
-
-                select * from tbltickets;
                 """;
 
             execute.Push(dummy_Data);

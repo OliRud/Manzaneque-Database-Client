@@ -193,6 +193,7 @@
             btnCreateTicket.TabIndex = 11;
             btnCreateTicket.Text = "+ Create Ticket";
             btnCreateTicket.UseVisualStyleBackColor = false;
+            btnCreateTicket.Click += btnCreateTicket_Click;
             // 
             // btnEnterQuery
             // 
