@@ -44,6 +44,7 @@
             btnBackup = new Button();
             btnCreateReport = new Button();
             btnResolve = new Button();
+            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -246,6 +247,14 @@
             btnResolve.TabIndex = 15;
             btnResolve.Text = "Resolve Ticket";
             btnResolve.UseVisualStyleBackColor = false;
+            btnResolve.Click += btnResolve_Click;
+            // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CacheAge = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.EnableCaching = false;
+            mySqlCommand1.Transaction = null;
             // 
             // DatabaseMain
             // 
@@ -293,5 +302,6 @@
         private Button btnBackup;
         private Button btnCreateReport;
         private Button btnResolve;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
     }
 }

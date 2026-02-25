@@ -81,5 +81,10 @@ namespace ManzanequeDatabaseClient.Windows
             CreateTicket createTicket = new CreateTicket();
             createTicket.Show();
         }
+        private void btnResolve_Click(object sender, EventArgs e)
+        {
+            ResolveTicket resolveTicket = new ResolveTicket();
+            resolveTicket.Show();
+        }
     }
 }
