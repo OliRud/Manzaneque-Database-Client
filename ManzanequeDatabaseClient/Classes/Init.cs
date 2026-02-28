@@ -34,9 +34,11 @@ namespace ManzanequeDatabaseClient.Classes
                     LicenceKey VARCHAR(10)
                 );
 
-                CREATE TABLE IF NOT EXISTS tblTechnicianPool (
-                    ID INT AUTO_INCREMENT PRIMARY KEY,
-                    Name VARCHAR(100)
+                CREATE TABLE IF NOT EXISTS tblTechnicians (
+                    ID INT,
+                    Name VARCHAR(100),
+                    specialism VARCHAR(50),
+                    PRIMARY KEY (ID, specialism)
                 );
 
                 CREATE TABLE IF NOT EXISTS tblEmployees (
@@ -50,15 +52,6 @@ namespace ManzanequeDatabaseClient.Classes
                     JobTitle VARCHAR(50),
                     Department VARCHAR(50),
                     FOREIGN KEY (Location) REFERENCES tblOffices(LocationName)
-                );
-
-                -- Technicians linked to the Pool
-                CREATE TABLE IF NOT EXISTS tblTechnicians (
-                    ID INT,
-                    Name VARCHAR(100),
-                    specialism VARCHAR(50),
-                    PRIMARY KEY (ID, specialism),
-                    FOREIGN KEY (ID) REFERENCES tblTechnicianPool(ID)
                 );
 
                 CREATE TABLE IF NOT EXISTS tblTickets (
@@ -89,8 +82,7 @@ namespace ManzanequeDatabaseClient.Classes
                     FOREIGN KEY (EmployeeID) REFERENCES tblEmployees(ID),
                     FOREIGN KEY (OfficeName) REFERENCES tblOffices(LocationName),
                     FOREIGN KEY (SerialNumber) REFERENCES tblHardware(SerialNumber),
-                    FOREIGN KEY (SoftwareID) REFERENCES tblSoftware(AssetID),
-                    FOREIGN KEY (TechnicianAssigned) REFERENCES tblTechnicianPool(ID)
+                    FOREIGN KEY (SoftwareID) REFERENCES tblSoftware(AssetID)
                 );
                 """;
 
@@ -225,14 +217,6 @@ namespace ManzanequeDatabaseClient.Classes
                 ('Ulysses Grant', '07700 901503', 'u.grant@yrk.com', 'York Branch', '2024-01-01', NULL, 'Office Admin', 'Admin'),
                 ('Vera Wang', '07700 901504', 'v.wang@yrk.com', 'York Branch', '2024-01-01', NULL, 'Support Tech', 'Hardware'),
                 ('Wyatt Earp', '07700 901505', 'w.earp@yrk.com', 'York Branch', '2024-01-01', NULL, 'DevOps Engineer', 'Software');
-                
-                
-                -- INSERT IGNORE INTO tblTechnicianPool (Name) VALUES 
-                -- ('Elena Rodriguez'),
-                -- ('Marcus Chen'),
-                -- ('Sarah Jenkins'),
-                -- ('Alistair Vance'),
-                -- ('Priya Kapoor');
 
                 INSERT IGNORE INTO tblTechnicians (ID, Name, specialism) VALUES 
                 -- Elena Rodriguez (ID 1)

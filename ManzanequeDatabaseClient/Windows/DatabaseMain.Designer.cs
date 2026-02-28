@@ -173,7 +173,7 @@
             // 
             // dataGridView
             // 
-            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView.BackgroundColor = SystemColors.Menu;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(12, 227);
@@ -208,6 +208,7 @@
             btnEnterQuery.TabIndex = 12;
             btnEnterQuery.Text = "Custom Query";
             btnEnterQuery.UseVisualStyleBackColor = false;
+            btnEnterQuery.Click += btnEnterQuery_Click;
             // 
             // btnBackup
             // 

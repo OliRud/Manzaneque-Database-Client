@@ -55,6 +55,7 @@ namespace ManzanequeDatabaseClient.Classes
             catch (Exception ex)
             {
                 Debug.WriteLine("Error: " + ex.Message);
+                con.Close();
             }
 
             return table;
@@ -76,6 +77,7 @@ namespace ManzanequeDatabaseClient.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.ToString());
+                con.Close();
             }
         }
 
@@ -90,6 +92,7 @@ namespace ManzanequeDatabaseClient.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.ToString());
+                con.Close();
             }
         }
 

@@ -86,5 +86,10 @@ namespace ManzanequeDatabaseClient.Windows
             ResolveTicket resolveTicket = new ResolveTicket();
             resolveTicket.Show();
         }
+        private void btnEnterQuery_Click(object sender, EventArgs e)
+        {
+            CustomQuery query = new CustomQuery();
+            query.Show();
+        }
     }
 }
