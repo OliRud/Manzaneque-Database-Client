@@ -21,14 +21,16 @@ namespace ManzanequeDatabaseClient
         private void btnLogin_Click(object sender, EventArgs e)
         {
 
-            if (entLoginBox.Text == dummy_admin_login || entLoginBox.Text == dummy_helpdesk_login)
+            if (Accounts.accounts.ContainsKey(entLoginBox.Text))
             {
+                Accounts.profile = entLoginBox.Text;
                 DatabaseMain databaseMain = new DatabaseMain(this);
                 databaseMain.Show();
                 this.Hide();
             }
         }
 
+        //second initialise for some reason
         private void initLogin_Load(object sender, EventArgs e)
         {
             Init initialise = new Init();

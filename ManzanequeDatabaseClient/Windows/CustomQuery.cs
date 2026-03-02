@@ -7,19 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManzanequeDatabaseClient.Classes;
 
 namespace ManzanequeDatabaseClient.Windows
 {
     public partial class CustomQuery : Form
     {
+        RunSql execute = new RunSql();
+
         public CustomQuery()
         {
             InitializeComponent();
+            execute.initialise();
         }
 
-        private void CustomQuery_Load(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            execute.Push(entQuery.Text);
         }
     }
 }

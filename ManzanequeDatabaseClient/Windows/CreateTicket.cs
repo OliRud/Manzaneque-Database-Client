@@ -33,7 +33,7 @@ namespace ManzanequeDatabaseClient.Windows
                     TechnicianAssigned, Note, Status
                 )
                 SELECT 
-                    CURDATE(), CURTIME(), 105,              -- Static: Date, Time, Operator ID
+                    CURDATE(), CURTIME(), '{Accounts.accounts[Accounts.profile]}',              -- Static: Date, Time, Operator ID
                     e.ID, e.Name, e.ContactNumber, e.Email, e.Location, -- From tblEmployees
                     h.SerialNumber, h.HardwareType,         -- From tblHardware
                     s.AssetID, s.OS, s.Application, s.LicenceKey, -- From tblSoftware

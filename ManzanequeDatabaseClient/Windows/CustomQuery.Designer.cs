@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            button1 = new Button();
+            entQuery = new TextBox();
+            btnSubmit = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
-            // textBox1
+            // entQuery
             // 
-            textBox1.Location = new Point(12, 32);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(438, 359);
-            textBox1.TabIndex = 0;
+            entQuery.Location = new Point(12, 32);
+            entQuery.Multiline = true;
+            entQuery.Name = "entQuery";
+            entQuery.Size = new Size(438, 359);
+            entQuery.TabIndex = 0;
             // 
-            // button1
+            // btnSubmit
             // 
-            button1.Location = new Point(162, 397);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 41);
-            button1.TabIndex = 1;
-            button1.Text = "Submit";
-            button1.UseVisualStyleBackColor = true;
+            btnSubmit.Location = new Point(162, 397);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(137, 41);
+            btnSubmit.TabIndex = 1;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // label1
             // 
@@ -66,19 +67,18 @@
             BackColor = Color.FromArgb(226, 244, 234);
             ClientSize = new Size(464, 444);
             Controls.Add(label1);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnSubmit);
+            Controls.Add(entQuery);
             Name = "CustomQuery";
             Text = "Custom Query";
-            Load += CustomQuery_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox entQuery;
+        private Button btnSubmit;
         private Label label1;
     }
 }

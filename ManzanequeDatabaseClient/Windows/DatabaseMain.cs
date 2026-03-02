@@ -28,6 +28,17 @@ namespace ManzanequeDatabaseClient.Windows
             execute.initialise();
             ChangeView("tblEmployees");
 
+            //permission check
+            if (Accounts.perms[Accounts.accounts[Accounts.profile]] == 1)
+            {
+                btnShowTickets.Enabled = false;
+                btnEnterQuery.Enabled = false;
+            }
+            else if (Accounts.perms[Accounts.accounts[Accounts.profile]] == 2)
+            {
+                btnCreateTicket.Enabled = false;
+                btnResolve.Enabled = false;
+            }
         }
 
         private void DatabaseMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,7 +48,7 @@ namespace ManzanequeDatabaseClient.Windows
 
 
         // table view
-        private void ChangeView(string view_to_change) //updating the table with new information
+        private void ChangeView(string view_to_change) //updating the table with new information 
         {
             currentWindow = view_to_change;
 
