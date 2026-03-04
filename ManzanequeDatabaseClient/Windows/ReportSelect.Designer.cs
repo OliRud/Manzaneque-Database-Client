@@ -36,8 +36,6 @@
             btn1Submit = new Button();
             entTechnicianID = new NumericUpDown();
             label7 = new Label();
-            label8 = new Label();
-            entOfficeID = new NumericUpDown();
             btn2Submit = new Button();
             label9 = new Label();
             label3 = new Label();
@@ -45,8 +43,8 @@
             label2 = new Label();
             label1 = new Label();
             entMonth = new NumericUpDown();
+            entOfficeName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)entTechnicianID).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)entOfficeID).BeginInit();
             ((System.ComponentModel.ISupportInitialize)entYear).BeginInit();
             ((System.ComponentModel.ISupportInitialize)entMonth).BeginInit();
             SuspendLayout();
@@ -129,25 +127,6 @@
             label7.TabIndex = 12;
             label7.Text = "ID";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(12, 380);
-            label8.Name = "label8";
-            label8.Size = new Size(18, 15);
-            label8.TabIndex = 16;
-            label8.Text = "ID";
-            // 
-            // entOfficeID
-            // 
-            entOfficeID.Location = new Point(39, 378);
-            entOfficeID.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            entOfficeID.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            entOfficeID.Name = "entOfficeID";
-            entOfficeID.Size = new Size(120, 23);
-            entOfficeID.TabIndex = 15;
-            entOfficeID.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
             // btn2Submit
             // 
             btn2Submit.Location = new Point(165, 367);
@@ -216,19 +195,25 @@
             entMonth.TabIndex = 26;
             entMonth.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
+            // entOfficeName
+            // 
+            entOfficeName.Location = new Point(12, 377);
+            entOfficeName.Name = "entOfficeName";
+            entOfficeName.Size = new Size(147, 23);
+            entOfficeName.TabIndex = 30;
+            // 
             // ReportSelect
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
             ClientSize = new Size(253, 587);
+            Controls.Add(entOfficeName);
             Controls.Add(entYear);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(entMonth);
             Controls.Add(label3);
-            Controls.Add(label8);
-            Controls.Add(entOfficeID);
             Controls.Add(btn2Submit);
             Controls.Add(label9);
             Controls.Add(label7);
@@ -242,7 +227,6 @@
             Name = "ReportSelect";
             Text = "Select A Report";
             ((System.ComponentModel.ISupportInitialize)entTechnicianID).EndInit();
-            ((System.ComponentModel.ISupportInitialize)entOfficeID).EndInit();
             ((System.ComponentModel.ISupportInitialize)entYear).EndInit();
             ((System.ComponentModel.ISupportInitialize)entMonth).EndInit();
             ResumeLayout(false);
@@ -258,8 +242,6 @@
         private Button btn1Submit;
         private NumericUpDown entTechnicianID;
         private Label label7;
-        private Label label8;
-        private NumericUpDown entOfficeID;
         private Button btn2Submit;
         private Label label9;
         private Label label3;
@@ -267,5 +249,6 @@
         private Label label2;
         private Label label1;
         private NumericUpDown entMonth;
+        private TextBox entOfficeName;
     }
 }

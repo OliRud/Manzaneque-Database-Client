@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManzanequeDatabaseClient.Classes;
 using Mysqlx.Prepare;
+using MySqlX.XDevAPI.Common;
 
 namespace ManzanequeDatabaseClient.Windows
 {
@@ -22,6 +23,8 @@ namespace ManzanequeDatabaseClient.Windows
             InitializeComponent();
             execute.initialise();
         }
+
+        // month's call summary
         private void btnMonthlyCallSummary_Click(object sender, EventArgs e)
         {
             string query = $"""
@@ -39,6 +42,7 @@ namespace ManzanequeDatabaseClient.Windows
             Report report = new Report(result);
             report.Show();
         }
+        // summary of technician jobs
         private void btnMonthlyTechnicianJobs_Click(object sender, EventArgs e)
         {
             string query = $"""
@@ -53,29 +57,93 @@ namespace ManzanequeDatabaseClient.Windows
                 WHERE MONTH(t.DateofCall) = '{entMonth.Value}' AND YEAR(DateofCall) = '{entYear.Value}'
                 GROUP BY p.ID;
                 """;
-            
+
             object result = execute.Pull(query, null, null, null, null);
 
             Report report = new Report(result);
             report.Show();
         }
-        // technician, office
+        // in depth summary of individual workload
         private void btn1Submit_Click(object sender, EventArgs e)
         {
+            string query = $"""
+                SELECT
+                    COUNT(*) AS Total_Jobs,
+                    SUM(CASE WHEN Status = 0 THEN 1 ELSE 0 END) AS Open,
+                    SUM(CASE WHEN Status = 1 THEN 1 ELSE 0 END) AS Closed,
+                    SUM(TimeToResolve) AS Total_Time,
+                    AVG(CASE WHEN Status = 1 THEN TimeToResolve ELSE NULL END) AS Avg_Time_Per_Job
+                FROM tblTickets
+                WHERE TechnicianAssigned = '{entTechnicianID.Value}'
+                AND MONTH(DateofCall) = '{entMonth.Value}'
+                AND YEAR(DateofCall) = '{entYear.Value}';
+                """;
 
+            object result = execute.Pull(query, null, null, null, null);
+
+            Report report = new Report(result);
+            report.Show();
         }
+        // in depth summary of individual office
         private void btn2Submit_Click(object sender, EventArgs e)
         {
+            string query = $"""
+                SELECT 
+                    OfficeName,
+                    HardwareType,
+                    SerialNumber,
+                    COUNT(TicketID) AS Failure_Count,
+                    SUM(CASE WHEN Status = 0 THEN 1 ELSE 0 END) AS Currently_Open
+                FROM tblTickets
+                WHERE OfficeName = '{entOfficeName.Text}'
+                AND MONTH(DateofCall) = '{entMonth.Value}'
+                AND YEAR(DateofCall) = '{entYear.Value}'
+                GROUP BY SerialNumber, HardwareType;
+                """;
 
+            object result = execute.Pull(query, null, null, null, null);
+
+            Report report = new Report(result);
+            report.Show();
         }
-        //
+        // summary of offices faults
         private void btnOfficeWorkload_Click(object sender, EventArgs e)
         {
+            string query = $"""
+                SELECT 
+                    OfficeName,
+                    SUM(CASE WHEN SerialNumber IS NOT NULL THEN 1 ELSE 0 END) AS Hardware_Faults,
+                    SUM(CASE WHEN SoftwareID IS NOT NULL THEN 1 ELSE 0 END) AS Software_Faults,
+                    SUM(TimeToResolve) AS Total_Time_Spent,
+                    COUNT(DISTINCT TechnicianAssigned) AS Unique_Techs_Assigned
+                FROM tblTickets
+                GROUP BY OfficeName;
+                """;
 
+            object result = execute.Pull(query, null, null, null, null);
+
+            Report report = new Report(result);
+            report.Show();
         }
+        // summary of equipment flagged
         private void btnEquipmentReliability_Click(object sender, EventArgs e)
         {
+            string query = $"""
+                SELECT 
+                    SerialNumber,
+                    HardwareType,
+                    COUNT(TicketID) AS Total_Repairs,
+                    SUM(TimeToResolve) AS Total_Downtime_Minutes
+                FROM tblTickets
+                WHERE SerialNumber IS NOT NULL
+                GROUP BY SerialNumber, HardwareType -- Add HardwareType here
+                ORDER BY Total_Repairs DESC;
+                """;
 
+            object result = execute.Pull(query, null, null, null, null);
+
+            Report report = new Report(result);
+            report.Show();
         }
     }
 }
