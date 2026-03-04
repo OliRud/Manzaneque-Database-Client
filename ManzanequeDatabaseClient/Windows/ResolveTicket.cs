@@ -28,7 +28,8 @@ namespace ManzanequeDatabaseClient.Windows
                 UPDATE tblTickets 
                 SET Status = 1, 
                     DateResolved = '{entDateTime.Value.ToString("yyyy-MM-dd")}', 
-                    TimeResolved = CURTIME(), 
+                    TimeResolved = CURTIME(),
+                    TimeToResolve = '{entResolveTime.Value}',
                     Resolution = '{entResolution.Text}'
                 WHERE TicketID = '{entTicketID.Value}';
                 """;

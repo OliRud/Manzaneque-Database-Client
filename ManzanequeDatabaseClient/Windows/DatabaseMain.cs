@@ -102,5 +102,10 @@ namespace ManzanequeDatabaseClient.Windows
             CustomQuery query = new CustomQuery();
             query.Show();
         }
+        private void btnCreateReport_Click(object sender, EventArgs e)
+        {
+            ReportSelect reportSelect = new ReportSelect();
+            reportSelect.Show();
+        }
     }
 }

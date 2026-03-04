@@ -81,21 +81,6 @@ namespace ManzanequeDatabaseClient.Classes
             }
         }
 
-        // for executing custom commands on the database
-        public void Custom(string command)
-        {
-            try
-            {
-                con.Open();
-                con.Close();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-                con.Close();
-            }
-        }
-
         //filter
         public void Filter()
         {
