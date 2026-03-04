@@ -107,5 +107,18 @@ namespace ManzanequeDatabaseClient.Windows
             ReportSelect reportSelect = new ReportSelect();
             reportSelect.Show();
         }
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            string[] tables = { "tblEmployees", "tblHardware", "tblSoftware", "tblOffices", "tblTickets", "tblTechnicians"};
+            foreach (string table in tables)
+            {
+                string query = $@"SELECT * FROM {table} 
+                  INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/{table}.csv' 
+                  FIELDS TERMINATED BY ',' 
+                  ENCLOSED BY '""' 
+                  LINES TERMINATED BY '\n';";
+                execute.Push(query);
+            }
+        }
     }
 }

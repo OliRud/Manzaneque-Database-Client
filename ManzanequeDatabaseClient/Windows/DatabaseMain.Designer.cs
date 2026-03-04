@@ -222,6 +222,7 @@
             btnBackup.TabIndex = 13;
             btnBackup.Text = "Backup";
             btnBackup.UseVisualStyleBackColor = false;
+            btnBackup.Click += btnBackup_Click;
             // 
             // btnCreateReport
             // 
