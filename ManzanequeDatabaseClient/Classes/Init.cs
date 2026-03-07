@@ -14,6 +14,13 @@ namespace ManzanequeDatabaseClient.Classes
             execute.initialise();
 
             string create_database = """
+
+                -- CLEAR EVERYTHING
+                DROP DATABASE Manzaneque;
+                CREATE DATABASE Manzaneque;
+                USE Manzaneque;
+
+
                 CREATE TABLE IF NOT EXISTS tblOffices (
                     ID INT AUTO_INCREMENT PRIMARY KEY,
                     LocationName VARCHAR(100) UNIQUE, -- Added UNIQUE to allow FK reference

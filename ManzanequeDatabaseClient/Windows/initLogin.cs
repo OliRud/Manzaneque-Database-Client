@@ -8,14 +8,32 @@ namespace ManzanequeDatabaseClient
 {
     public partial class initLogin : Form
     {
-
-        //fix this later
-        string dummy_helpdesk_login = "helpdesk123";
-        string dummy_admin_login = "admin";
-
         public initLogin()
         {
             InitializeComponent();
+
+            DialogResult result = MessageBox.Show(
+                """
+                -NEW DATABASE-
+
+                Would you like to create a fresh database?
+
+                Yes (New Save) - Creates a fresh database
+                No (Load Save) - Uses existing database
+
+
+                Click 'Yes' if this is your first time running the program.
+                """,
+                "New Save",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                Init initialise = new Init();
+                initialise.initialise();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -28,13 +46,6 @@ namespace ManzanequeDatabaseClient
                 databaseMain.Show();
                 this.Hide();
             }
-        }
-
-        //second initialise for some reason
-        private void initLogin_Load(object sender, EventArgs e)
-        {
-            Init initialise = new Init();
-            initialise.initialise();
         }
 
         private void initLogin_FormClosing(object sender, FormClosingEventArgs e)

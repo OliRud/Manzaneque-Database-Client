@@ -48,18 +48,5 @@ namespace ManzanequeDatabaseClient.Windows
 
             execute.Push(command);
         }
-
-        private void entTechnicianID_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void entSerialNumber_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void entEmployeeID_ValueChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

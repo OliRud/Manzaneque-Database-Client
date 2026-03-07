@@ -30,11 +30,15 @@
         {
             btnLogin = new Button();
             entLoginBox = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label5 = new Label();
             SuspendLayout();
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(196, 238);
+            btnLogin.Location = new Point(197, 199);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 0;
@@ -49,18 +53,62 @@
             entLoginBox.Size = new Size(204, 23);
             entLoginBox.TabIndex = 1;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Green;
+            label1.Location = new Point(153, 259);
+            label1.Name = "label1";
+            label1.Size = new Size(173, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Helpdesk Account = Helpdesk1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label2.ForeColor = Color.FromArgb(0, 64, 0);
+            label2.Location = new Point(207, 235);
+            label2.Name = "label2";
+            label2.Size = new Size(58, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Accounts";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Green;
+            label3.Location = new Point(158, 275);
+            label3.Name = "label3";
+            label3.Size = new Size(166, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Manager Account = Manager ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Green;
+            label5.Location = new Point(168, 290);
+            label5.Name = "label5";
+            label5.Size = new Size(141, 15);
+            label5.TabIndex = 6;
+            label5.Text = "Admin Account = Admin";
+            // 
             // initLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
-            ClientSize = new Size(484, 361);
+            ClientSize = new Size(470, 327);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(entLoginBox);
             Controls.Add(btnLogin);
             Name = "initLogin";
             Text = "Login";
             FormClosing += initLogin_FormClosing;
-            Load += initLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -69,5 +117,9 @@
 
         private Button btnLogin;
         private TextBox entLoginBox;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label5;
     }
 }

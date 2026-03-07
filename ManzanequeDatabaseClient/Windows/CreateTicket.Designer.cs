@@ -112,7 +112,6 @@
             entEmployeeID.Name = "entEmployeeID";
             entEmployeeID.Size = new Size(154, 23);
             entEmployeeID.TabIndex = 6;
-            entEmployeeID.ValueChanged += entEmployeeID_ValueChanged;
             // 
             // entSerialNumber
             // 
@@ -121,7 +120,6 @@
             entSerialNumber.Name = "entSerialNumber";
             entSerialNumber.Size = new Size(154, 23);
             entSerialNumber.TabIndex = 7;
-            entSerialNumber.ValueChanged += entSerialNumber_ValueChanged;
             // 
             // entAssetID
             // 
@@ -138,7 +136,6 @@
             entTechnicianID.Name = "entTechnicianID";
             entTechnicianID.Size = new Size(154, 23);
             entTechnicianID.TabIndex = 9;
-            entTechnicianID.ValueChanged += entTechnicianID_ValueChanged;
             // 
             // entNote
             // 

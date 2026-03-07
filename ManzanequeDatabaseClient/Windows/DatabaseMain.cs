@@ -47,7 +47,7 @@ namespace ManzanequeDatabaseClient.Windows
         }
 
 
-        // table view
+        // update grid box
         private void ChangeView(string view_to_change) //updating the table with new information 
         {
             currentWindow = view_to_change;
@@ -60,6 +60,7 @@ namespace ManzanequeDatabaseClient.Windows
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        // select table to view
         private void btnShowEmployees_Click(object sender, EventArgs e)
         {
             ChangeView("tblEmployees");

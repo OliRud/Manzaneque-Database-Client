@@ -48,14 +48,15 @@ namespace ManzanequeDatabaseClient.Windows
             string query = $"""
                 SELECT 
                     p.Name AS Technician_Name,
-                    COUNT(t.TicketID) AS Total_Jobs,
-                    SUM(CASE WHEN t.Status = 0 THEN 1 ELSE 0 END) AS Open_Jobs,
-                    SUM(CASE WHEN t.Status = 1 THEN 1 ELSE 0 END) AS Closed_Jobs,
-                    SUM(t.TimeToResolve) AS Total_Time_Spent
-                FROM tblTechnicianPool p
+                    COUNT(DISTINCT t.TicketID) AS Total_Jobs, -- Only count unique tickets
+                    COUNT(DISTINCT CASE WHEN t.Status = 0 THEN t.TicketID END) AS Open_Jobs,
+                    COUNT(DISTINCT CASE WHEN t.Status = 1 THEN t.TicketID END) AS Closed_Jobs,
+                    SUM(t.TimeToResolve) / (COUNT(*) / COUNT(DISTINCT t.TicketID)) AS Total_Time_Spent
+                FROM tblTechnicians p
                 JOIN tblTickets t ON p.ID = t.TechnicianAssigned
-                WHERE MONTH(t.DateofCall) = '{entMonth.Value}' AND YEAR(DateofCall) = '{entYear.Value}'
-                GROUP BY p.ID;
+                WHERE MONTH(t.DateofCall) = {entMonth.Value} 
+                AND YEAR(t.DateofCall) = {entYear.Value}
+                GROUP BY p.ID, p.Name;
                 """;
 
             object result = execute.Pull(query, null, null, null, null);
