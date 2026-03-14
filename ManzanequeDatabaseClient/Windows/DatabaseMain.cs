@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ManzanequeDatabaseClient.Classes;
 using Mysqlx.Prepare;
+using Org.BouncyCastle.Asn1.Cmp;
 
 namespace ManzanequeDatabaseClient.Windows
 {
@@ -60,6 +61,29 @@ namespace ManzanequeDatabaseClient.Windows
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        // clean ticket table
+        private void cleanTickets()
+        {
+            string query = """
+                DELETE FROM tblTickets
+                WHERE 
+                    -- Missing Contact Details
+                    (Email IS NULL OR Email = '') 
+                    OR EmployeeID IS NULL
+
+                    -- Missing Technician
+                    OR TechnicianAssigned IS NULL
+
+                    -- Missing Operator
+                    OR OperatorID IS NULL
+
+                    -- Missing Hardware
+                    OR SerialNumber IS NULL;
+                """;
+
+            execute.Push(query);
+        }
+
         // select table to view
         private void btnShowEmployees_Click(object sender, EventArgs e)
         {
@@ -84,10 +108,11 @@ namespace ManzanequeDatabaseClient.Windows
         private void btnShowTickets_Click(object sender, EventArgs e)
         {
             ChangeView("tblTickets");
+            cleanTickets();
         }
 
 
-        // opening windows
+        // opening windows & backup
         private void btnCreateTicket_Click(object sender, EventArgs e)
         {
             CreateTicket createTicket = new CreateTicket();
@@ -110,7 +135,7 @@ namespace ManzanequeDatabaseClient.Windows
         }
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            string[] tables = { "tblEmployees", "tblHardware", "tblSoftware", "tblOffices", "tblTickets", "tblTechnicians"};
+            string[] tables = { "tblEmployees", "tblHardware", "tblSoftware", "tblOffices", "tblTickets", "tblTechnicians" };
             foreach (string table in tables)
             {
                 string query = $@"SELECT * FROM {table} 
