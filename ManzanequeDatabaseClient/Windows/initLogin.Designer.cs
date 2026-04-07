@@ -34,6 +34,8 @@
             label2 = new Label();
             label3 = new Label();
             label5 = new Label();
+            label4 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // btnLogin
@@ -94,18 +96,44 @@
             label5.TabIndex = 6;
             label5.Text = "Admin Account = Admin";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe Script", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.OliveDrab;
+            label4.Location = new Point(106, 31);
+            label4.Name = "label4";
+            label4.Size = new Size(259, 57);
+            label4.TabIndex = 7;
+            label4.Text = "Manzaneque";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe Script", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.Olive;
+            label6.Location = new Point(168, 88);
+            label6.Name = "label6";
+            label6.Size = new Size(140, 25);
+            label6.TabIndex = 8;
+            label6.Text = "Database Client";
+            // 
             // initLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(226, 244, 234);
             ClientSize = new Size(470, 327);
+            Controls.Add(label6);
+            Controls.Add(label4);
             Controls.Add(label5);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(entLoginBox);
             Controls.Add(btnLogin);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "initLogin";
             Text = "Login";
             FormClosing += initLogin_FormClosing;
@@ -121,5 +149,7 @@
         private Label label2;
         private Label label3;
         private Label label5;
+        private Label label4;
+        private Label label6;
     }
 }
